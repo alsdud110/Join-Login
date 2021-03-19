@@ -31,3 +31,14 @@ function joinForm(joinForm){
 	joinForm.action = "joinOk.jsp";
 	joinForm.submit();
 }
+
+function modifyForm(modifyform){
+	if(modifyform.newPasswd.value == modifyform.newPasswd2.value){
+		modifyform.action = "modifyPasswdSuccess.jsp";
+		modifyform.submit();
+	}else{
+		alert("비밀번호 확인 후 다시 입력해주세요.");
+		history.go(-1);
+	}
+		
+}

@@ -59,6 +59,7 @@
 				<div id="emailHelp" class="form-text">주소를 입력하세요.</div>
 			</div>
 			<button type="submit" class="btn btn-primary">수정하기</button>
+			<button type = "submit" class = "btn btn-primary" onclick = "action='modifyPasswd.jsp'; submit();">비밀번호 수정하기</button>
 			<button type="submit" class="btn btn-primary" onclick = "action='delete.jsp'; submit();">삭제하기</button>
 			<input type = "reset" class = "btn btn-primary" value = "다시 작성">
 		</div>

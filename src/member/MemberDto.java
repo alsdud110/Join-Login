@@ -135,13 +135,13 @@ public class MemberDto {
 	    	
 	    	try {
 	    		conn = getConnection();
-	    		String sql = "update login set passwd = ?, name = ?, email = ?, address = ? where id = ?";
+	    		String sql = "update login set name = ?, email = ?, address = ? where id = ?";
 	    		pstmt = conn.prepareStatement(sql);
-	    		pstmt.setString(1, member.getPasswd());
-	    		pstmt.setString(2, member.getName());
-	    		pstmt.setString(3, member.getEmail());
-	    		pstmt.setString(4, member.getAddress());
-	    		pstmt.setString(5, member.getId());
+	    		
+	    		pstmt.setString(1, member.getName());
+	    		pstmt.setString(2, member.getEmail());
+	    		pstmt.setString(3, member.getAddress());
+	    		pstmt.setString(4, member.getId());
 	    		pstmt.executeUpdate();
 	    		System.out.println("업데이트 성공!");
 	    	}catch(Exception e) {
@@ -169,6 +169,43 @@ public class MemberDto {
 	    	}catch(Exception e) {
 	    		e.printStackTrace();
 	    		System.out.println("삭제 실패");
+	    	}finally {
+	            if (pstmt != null) 
+	            	try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) 
+	            	try { conn.close(); } catch(SQLException ex) {}
+	    	}
+	    }
+	    
+	    
+	    
+	    @SuppressWarnings("resource")
+		public void modifyPasswd(String id, String passwd, String newPasswd) throws Exception{
+	    	Connection conn = null;
+	    	PreparedStatement pstmt = null;
+	    	ResultSet rs = null;
+	    	String sql = "";
+	    	
+	    	try {
+	    		conn = getConnection();
+	    		sql = "select passwd from login where id = ?";
+	    		pstmt = conn.prepareStatement(sql);
+	    		pstmt.setString(1, id);
+	    		rs = pstmt.executeQuery();
+	    		
+	    		if(rs.next()) {
+	    			if(passwd.equals(rs.getString("passwd"))) {
+	    				sql = "update login set passwd = ? where id = ?";
+	    				pstmt = conn.prepareStatement(sql);
+	    				pstmt.setString(1, newPasswd);
+	    				pstmt.setString(2, id);
+	    				pstmt.executeUpdate();
+	    			}
+	    		}
+	    		System.out.println("변경완료!");
+	    	}catch(Exception e) {
+	    		e.printStackTrace();
+	    		System.out.println("비밀번호 수정 실패");
 	    	}finally {
 	            if (pstmt != null) 
 	            	try { pstmt.close(); } catch(SQLException ex) {}

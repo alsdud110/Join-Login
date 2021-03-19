@@ -14,40 +14,10 @@
 <title></title>
 </head>
 <body>
-	<%
-		String id = request.getParameter("id");
-		String passwd = request.getParameter("passwd");
-		session.setAttribute("id", id);
-		session.setAttribute("passwd",passwd);
-		
-		int check = 0;
-		
-		MemberDto dbpro = MemberDto.getInstance();
-		check = dbpro.userCheck(id, passwd);
-		
-		if(check == 1){
-			%>
-			<script>
-				alert('로그인 성공!');
-				location.href = "main.jsp";
-			</script>
-			<%
-		}else if(check == 0){
-			%>
-			<script>
-				alert('비밀번호가 틀렸습니다!');
-				history.go(-1);
-			</script>
-			<%
-		}else{
-			%>
-			<script>
-				alert('존재하지 않는 아이디입니다.');
-				location.href = "join.jsp";
-			</script>
-		<% }	
-		%>
-	
+	<form method = "post" action = "modifyPasswdPro.jsp">
+	비밀번호 확인 : <input type = "password" name = "passwd"><br>
+	<input type = "submit" class = "btn btn-primary" value = "확인">
+	</form>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
