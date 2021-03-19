@@ -14,11 +14,11 @@
 <title></title>
 </head>
 <body>
-<jsp:useBean id = "member" class = "member.MemberDao">
+<jsp:useBean id = "member" class = "member.MemberDto">
 	<jsp:setProperty name = "member" property = "*"/>
 </jsp:useBean>
 	<%
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		dbpro.updateMember(member);
 	%>
 	<script>

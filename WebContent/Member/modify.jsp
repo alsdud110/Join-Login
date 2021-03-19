@@ -17,8 +17,8 @@
 
 	<%
 		String id = (String)session.getAttribute("id");
-		MemberDto dbpro = MemberDto.getInstance();
-		MemberDao member = dbpro.getUserInfo(id);
+		MemberDao dbpro = MemberDao.getInstance();
+		MemberDto member = dbpro.getUserInfo(id);
 		
 	%>
 		<form method="post" action="modifyOk.jsp">

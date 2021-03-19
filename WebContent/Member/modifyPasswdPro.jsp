@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.*, javax.sql.*, javax.naming.*"%>
-<%@ page import="member.MemberDao"%>
 <%@ page import="member.MemberDto"%>
+<%@ page import="member.MemberDao"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -26,11 +26,11 @@
 		String id = (String) session.getAttribute("id");
 		String passwd = (String)session.getAttribute("passwd");
 		
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		int check = dbpro.userCheck(id, passwd);
 		
 		if(check == 0){
-			%>
+	%>
 			<script>
 				alert("비밀번호가 틀렸습니다!");
 				history.go(-1);

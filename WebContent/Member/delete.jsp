@@ -17,7 +17,7 @@
 	<%
 		String id = (String)session.getAttribute("id");
 		
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		dbpro.deleteMember(id);
 	%>
 	

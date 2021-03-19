@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.*, javax.sql.*, javax.naming.*"%>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
+<%@ page import = "member.MemberDao" %>
+<%@ page import = "member.MemberDto" %>
+<%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +18,14 @@
 <title></title>
 </head>
 <body>
-<jsp:useBean id = "member" class = "member.MemberDao">
-	<jsp:setProperty name = "member" property = "*"/>
-</jsp:useBean>
 	<%
 		String id = "";
 		String passwd = "";
-		String name = member.getName();
+		
 	try{
 		id = (String)session.getAttribute("id");
+		MemberDao dbpro = MemberDao.getInstance();
+		String name = dbpro.getName(id);
 		
 		
 	
@@ -37,7 +36,7 @@
 		} else {
 	%>
 
-	<%=name%>님 어서오세요!
+	<B><%=name%></B>님 어서오세요!
 	<div class="container mx-auto">
 		<button type="button" onclick="location.href = 'logOut.jsp'"
 			class="btn btn-outline-success">로그아웃</button>

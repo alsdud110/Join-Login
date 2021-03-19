@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*"%>
 <%@ page import = "java.sql.*, javax.sql.*, javax.naming.*"%>
-<%@ page import="member.MemberDao"%>
 <%@ page import="member.MemberDto"%>
-<% request.setCharacterEncoding("utf-8");%>
+<%@ page import="member.MemberDao"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +21,9 @@
 		String passwd = request.getParameter("passwd");
 		String newPasswd = request.getParameter("newPasswd");
 		
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		dbpro.modifyPasswd(id, passwd, newPasswd);
-		
-		%>
+	%>
 		<script>
 			alert("변경완료!");
 			location.href = "login.jsp";

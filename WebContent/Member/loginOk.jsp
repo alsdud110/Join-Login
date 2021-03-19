@@ -22,7 +22,7 @@
 		
 		int check = 0;
 		
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		check = dbpro.userCheck(id, passwd);
 		
 		if(check == 1){

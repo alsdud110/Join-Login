@@ -14,7 +14,7 @@
 <title></title>
 </head>
 <body>
-<jsp:useBean id = "member" class = "member.MemberDao">
+<jsp:useBean id = "member" class = "member.MemberDto">
 	<jsp:setProperty name = "member" property = "*"/>
 </jsp:useBean>
 	<%
@@ -30,7 +30,7 @@
 		member.setEmail(email);
 		member.setAddress(address);
 		
-		MemberDto dbpro = MemberDto.getInstance();
+		MemberDao dbpro = MemberDao.getInstance();
 		dbpro.insertMember(member);
 		response.sendRedirect("login.jsp");
 				

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*"%>
 <%@ page import = "java.sql.*, javax.sql.*, javax.naming.*"%>
-<%@ page import = "member.MemberDao" %>
 <%@ page import = "member.MemberDto" %>
+<%@ page import = "member.MemberDao" %>
 <% request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html>
 <html>
